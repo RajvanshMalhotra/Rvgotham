@@ -266,7 +266,7 @@ export default function GothamOrbital(){
 
   const [ready,     setReady]     = useState(false);
   const [tleStatus, setTleStatus] = useState("loading");
-  const [bUrl,      setBUrl]      = useState("http://16.16.251.215:8080");
+  const [bUrl,      setBUrl]      = useState(import.meta.env.VITE_BACKEND_URL || "http://16.16.251.215:8000");
   const [bSec,      setBSec]      = useState("");
   const [groq,      setGroq]      = useState("");
   const [tavily,    setTavily]    = useState("");
@@ -370,7 +370,7 @@ export default function GothamOrbital(){
     if(!Cesium||!cesiumContainerRef.current)return;
 
     // Suppress Ion token warning with a placeholder (not used — offline imagery only)
-    Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc4ZTEiLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk";
+    Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_TOKEN || "";
 
     const viewer = new Cesium.Viewer(cesiumContainerRef.current,{
       baseLayerPicker:      false,
