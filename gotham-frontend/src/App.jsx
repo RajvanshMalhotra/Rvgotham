@@ -732,9 +732,9 @@ export default function GothamOrbital(){
         .cesium-widget-credits{display:none!important}
         .cesium-credit-logoContainer{display:none!important}
         .cesium-viewer-bottom{display:none!important}
-        .tbtn{background:transparent;border:1px solid rgba(200,216,232,0.14);color:rgba(200,216,232,0.5);font-family:'Share Tech Mono',monospace;font-size:8.5px;letter-spacing:1.5px;padding:3px 10px;border-radius:1px;cursor:pointer;transition:all .15s}
-        .tbtn:hover{border-color:rgba(77,217,160,0.45);color:#4dd9a0;background:rgba(77,217,160,0.06)}
-        .tbtn.active{border-color:rgba(77,217,160,0.6);color:#4dd9a0;background:rgba(77,217,160,0.1)}
+        .tbtn{background:transparent;border:1px solid rgba(77,217,160,0.4);color:rgba(200,216,232,0.7);font-family:'Share Tech Mono',monospace;font-size:8.5px;letter-spacing:1.5px;padding:4px 12px;border-radius:2px;cursor:pointer;transition:all .15s}
+        .tbtn:hover{border-color:#4dd9a0;color:#fff;background:rgba(77,217,160,0.12)}
+        .tbtn.active{border-color:#4dd9a0;color:#4dd9a0;background:rgba(77,217,160,0.15)}
         .tbtn.danger{border-color:rgba(255,68,85,0.45);color:#ff5566}
         .tbtn.danger:hover{background:rgba(255,68,85,0.1);border-color:#ff5566}
         .tbtn:disabled{opacity:.18;cursor:not-allowed}
@@ -750,18 +750,18 @@ export default function GothamOrbital(){
         .qin{background:#fff;border:1px solid #d0d8e0;color:#1e2830;font-size:11px;padding:7px 10px;border-radius:3px;outline:none;flex:1;transition:border-color .15s;font-family:'Inter',system-ui,sans-serif}
         .qin:focus{border-color:#2a7fc1;box-shadow:0 0 0 2px rgba(42,127,193,0.12)}
         .qin::placeholder{color:#a0acb8}
-        .wpbtn{background:#fff;border:1px solid #d0d8e0;color:#3a4a58;font-size:11px;font-weight:500;padding:4px 12px;border-radius:3px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;font-family:'Inter',system-ui,sans-serif}
-        .wpbtn:hover{background:#f0f4f8;border-color:#aabccc;color:#1a2a38}
-        .wpbtn.primary{background:#2a7fc1;border-color:#2a7fc1;color:#fff}
-        .wpbtn.primary:hover{background:#1a6aaa}
+        .wpbtn{background:#f5f7fa;border:1px solid #c0ccd8;color:#1a2a38;font-size:11px;font-weight:600;padding:5px 12px;border-radius:3px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;font-family:'Inter',system-ui,sans-serif}
+        .wpbtn:hover{background:#e8ecf0;border-color:#8aaccc;color:#0a1a28}
+        .wpbtn.primary{background:#2a7fc1;border-color:#1a5aaa;color:#fff}
+        .wpbtn.primary:hover{background:#1a5aaa;box-shadow:0 2px 8px rgba(42,127,193,0.3)}
         .wpbtn.danger{border-color:#c0192c;color:#c0192c}
         .wpbtn.danger:hover{background:#fde8ea}
         .wpbtn:disabled{opacity:.3;cursor:not-allowed}
-        .zb{width:28px;height:28px;background:rgba(6,10,18,0.85);border:1px solid rgba(200,216,232,0.15);color:rgba(200,216,232,0.5);border-radius:2px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:monospace}
-        .zb:hover{border-color:rgba(77,217,160,0.5);color:#4dd9a0;background:rgba(77,217,160,0.08)}
-        .sin{background:#fff;border:1px solid #d0d8e0;border-radius:3px;padding:6px 10px 6px 28px;font-size:11px;color:#1e2830;outline:none;width:100%;transition:border-color .15s;font-family:'Inter',system-ui,sans-serif}
-        .sin:focus{border-color:#2a7fc1;box-shadow:0 0 0 2px rgba(42,127,193,0.12)}
-        .sin::placeholder{color:#a0acb8}
+        .zb{width:32px;height:32px;background:rgba(0,0,0,0.6);border:1px solid rgba(77,217,160,0.3);color:rgba(200,216,232,0.6);border-radius:2px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:monospace;font-weight:bold}
+        .zb:hover{border-color:#4dd9a0;color:#fff;background:rgba(77,217,160,0.15);box-shadow:0 0 10px rgba(77,217,160,0.2)}
+        .sin{background:#fff;border:1.5px solid #b8c4d0;border-radius:3px;padding:6px 10px 6px 28px;font-size:11px;color:#0a1a28;outline:none;width:100%;transition:border-color .15s;font-family:'Inter',system-ui,sans-serif}
+        .sin:focus{border-color:#2a7fc1;box-shadow:0 0 0 3px rgba(42,127,193,0.15)}
+        .sin::placeholder{color:#8a9aaa}
         /* Fix Cesium canvas */
         #cesium-container{width:100%;height:100%}
         #cesium-container canvas{width:100%!important;height:100%!important}
@@ -804,11 +804,11 @@ export default function GothamOrbital(){
 
         {/* Metal prices */}
         <div style={{display:"flex",alignItems:"center",gap:14,marginRight:12,paddingRight:12,borderRight:"1px solid rgba(255,255,255,0.07)"}}>
-          {[{sym:"XAU",val:metals.gold,d:metals.gd,c:"#f0c040",dp:2},{sym:"XAG",val:metals.silver,d:metals.sd,c:"#aabccc",dp:3}].map(m=>(
-            <div key={m.sym} style={{display:"flex",alignItems:"center",gap:5}}>
+          {[{label:"Gold",val:metals.gold,d:metals.gd,c:"#f0c040",dp:2},{label:"Silver",val:metals.silver,d:metals.sd,c:"#aabccc",dp:3}].map(m=>(
+            <div key={m.label} style={{display:"flex",alignItems:"center",gap:5}}>
               <div style={{width:4,height:4,borderRadius:"50%",background:m.c,boxShadow:`0 0 4px ${m.c}88`}}/>
-              <span style={{fontSize:7,color:"rgba(200,216,232,0.28)",letterSpacing:1.5,fontFamily:"monospace"}}>{m.sym}</span>
-              <span style={{fontFamily:"'Barlow Condensed',sans-serif",fontWeight:600,fontSize:13,color:m.c}}>
+              <span style={{fontSize:8,color:"rgba(200,216,232,0.5)",letterSpacing:0.5,fontFamily:"system-ui",fontWeight:500}}>{m.label}</span>
+              <span style={{fontFamily:"'Barlow Condensed',sans-serif",fontWeight:700,fontSize:12,color:m.c}}>
                 ${m.val.toLocaleString("en",{minimumFractionDigits:m.dp,maximumFractionDigits:m.dp})}
               </span>
               <span style={{fontSize:8,color:m.d>=0?"#4dd9a0":"#ff6666",fontFamily:"monospace"}}>{m.d>=0?"▲":"▼"}{Math.abs(m.d).toFixed(m.dp)}</span>
@@ -837,7 +837,7 @@ export default function GothamOrbital(){
 
       {/* Config bar */}
       {showCfg&&(
-        <div style={{padding:"7px 14px",background:"#0f1822",borderBottom:"1px solid rgba(240,192,64,0.12)",display:"flex",alignItems:"flex-end",gap:10,flexShrink:0,flexWrap:"wrap"}}>
+        <div style={{padding:"7px 14px",background:"#141d2a",borderBottom:"1px solid rgba(77,217,160,0.15)",display:"flex",alignItems:"flex-end",gap:10,flexShrink:0,flexWrap:"wrap"}}>
           <span style={{fontSize:8,color:"rgba(240,192,64,0.5)",letterSpacing:2,alignSelf:"center"}}>⚙ CONFIG</span>
           <div style={{display:"flex",flexDirection:"column",gap:2}}>
             <label style={{fontSize:7,color:"rgba(200,216,232,0.22)",letterSpacing:1.5}}>BACKEND URL</label>
@@ -861,20 +861,18 @@ export default function GothamOrbital(){
       <div style={{flex:1,display:"flex",minHeight:0}}>
 
         {/* Icon sidebar */}
-        <div style={{width:44,flexShrink:0,background:"#111822",borderRight:"1px solid #0a1218",display:"flex",flexDirection:"column",alignItems:"center",padding:"8px 0",gap:2}}>
-          {[{icon:"◉",title:"Globe",active:true},{icon:"▤",title:"Catalog"},{icon:"⚡",title:"Alerts"},{icon:"◈",title:"Objects"},{icon:"⬡",title:"Network"},{icon:"◎",title:"Analysis"}].map((item,i)=>(
-            <button key={i} title={item.title} style={{width:32,height:32,background:item.active?"rgba(42,127,193,0.22)":"transparent",border:`1px solid ${item.active?"rgba(42,127,193,0.45)":"transparent"}`,borderRadius:3,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",color:item.active?"#7ec4f0":"rgba(255,255,255,0.2)",fontSize:13,transition:"all .15s"}}
-              onMouseEnter={e=>{if(!item.active){e.currentTarget.style.background="rgba(255,255,255,0.06)";e.currentTarget.style.color="rgba(255,255,255,0.5)";}}}
-              onMouseLeave={e=>{if(!item.active){e.currentTarget.style.background="transparent";e.currentTarget.style.color="rgba(255,255,255,0.2)";}}}
+        <div style={{width:44,flexShrink:0,background:"#0a1018",borderRight:"1px solid rgba(77,217,160,0.1)",display:"flex",flexDirection:"column",alignItems:"center",padding:"8px 0",gap:2}}>
+          {[{icon:"◉",title:"Globe",id:"globe"},{icon:"🛰",title:"Satellites",id:"sats"},{icon:"📊",title:"Threats",id:"threats"},{icon:"🗺",title:"Coverage",id:"coverage"}].map((item,i)=>(
+            <button key={i} title={item.title} style={{width:32,height:32,background:"transparent",border:"1px solid rgba(77,217,160,0.2)",borderRadius:3,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",color:"rgba(200,216,232,0.4)",fontSize:13,transition:"all .15s"}}
+              onMouseEnter={e=>{e.currentTarget.style.background="rgba(77,217,160,0.1)";e.currentTarget.style.color="#4dd9a0";e.currentTarget.style.borderColor="#4dd9a0";}}
+              onMouseLeave={e=>{e.currentTarget.style.background="transparent";e.currentTarget.style.color="rgba(200,216,232,0.4)";e.currentTarget.style.borderColor="rgba(77,217,160,0.2)";}} 
             >{item.icon}</button>
           ))}
           <div style={{flex:1}}/>
-          {[{icon:"⚙"},{icon:"?"}].map((item,i)=>(
-            <button key={i} style={{width:32,height:32,background:"transparent",border:"1px solid transparent",borderRadius:3,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",color:"rgba(255,255,255,0.18)",fontSize:13,transition:"all .15s"}}
-              onMouseEnter={e=>{e.currentTarget.style.background="rgba(255,255,255,0.06)";e.currentTarget.style.color="rgba(255,255,255,0.45)";}}
-              onMouseLeave={e=>{e.currentTarget.style.background="transparent";e.currentTarget.style.color="rgba(255,255,255,0.18)";}}
-            >{item.icon}</button>
-          ))}
+          <button title="Settings" style={{width:32,height:32,background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:3,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",color:"rgba(200,216,232,0.3)",fontSize:13,transition:"all .15s"}}
+            onMouseEnter={e=>{e.currentTarget.style.background="rgba(255,255,255,0.07)";e.currentTarget.style.color="rgba(200,216,232,0.6)";}} 
+            onMouseLeave={e=>{e.currentTarget.style.background="transparent";e.currentTarget.style.color="rgba(200,216,232,0.3)";}} 
+            onClick={()=>setShowCfg(s=>!s)}>⚙</button>
         </div>
 
         {/* Left panel */}
@@ -883,7 +881,6 @@ export default function GothamOrbital(){
           {/* Situation header */}
           {sit&&(
             <div style={{flexShrink:0}}>
-              <ClassBanner cls={sit.classification}/>
               <div style={{padding:"10px 14px 0"}}>
                 <div style={{display:"flex",alignItems:"flex-start",gap:10,paddingBottom:8}}>
                   <div style={{width:44,height:44,background:"#f0f4f8",border:"1px solid #d0d8e0",borderRadius:3,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
@@ -1072,6 +1069,16 @@ export default function GothamOrbital(){
             <div style={{position:"absolute",right:12,top:12,display:"flex",flexDirection:"column",gap:4,zIndex:5}}>
               <button className="zb" onClick={flyHome} title="Home view">⌂</button>
               {selUI&&selPos&&<button className="zb" onClick={()=>flyToSat(selUI.id)} title="Fly to satellite">🎯</button>}
+              <button className="zb" title="Zoom in" onClick={()=>{
+                const v=viewerRef.current;if(!v||!window.Cesium)return;
+                const cart=v.camera.position;const mag=window.Cesium.Cartesian3.magnitude(cart);
+                v.camera.position=window.Cesium.Cartesian3.multiplyByScalar(cart,0.7,new window.Cesium.Cartesian3());
+              }}>+</button>
+              <button className="zb" title="Zoom out" onClick={()=>{
+                const v=viewerRef.current;if(!v||!window.Cesium)return;
+                const cart=v.camera.position;const mag=window.Cesium.Cartesian3.magnitude(cart);
+                v.camera.position=window.Cesium.Cartesian3.multiplyByScalar(cart,1.4,new window.Cesium.Cartesian3());
+              }}>−</button>
               <button className="zb" title="Tilt up" onClick={()=>{
                 const v=viewerRef.current;if(!v)return;
                 v.camera.rotateUp(0.3);
@@ -1123,21 +1130,25 @@ export default function GothamOrbital(){
           {/* Right panel */}
           <div style={{width:280,flexShrink:0,background:"#fff",borderLeft:"1px solid #d8e0e8",display:"flex",flexDirection:"column",minHeight:0,boxShadow:"-2px 0 8px rgba(0,0,0,0.08)"}}>
             {sit&&(<>
-              {/* Doctrinal pattern */}
+              {/* Threat timeline */}
               <div style={{padding:"10px 14px",borderBottom:"1px solid #eef1f4",flexShrink:0}}>
                 <div style={{fontSize:9,fontWeight:700,letterSpacing:1.5,color:"#5a6a78",marginBottom:8,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-                  <span style={{display:"flex",alignItems:"center",gap:5}}><span style={{width:3,height:10,background:"#8a3800",borderRadius:1,display:"inline-block"}}/>DOCTRINAL PATTERN</span>
-                  <button className="wpbtn" style={{fontSize:9,padding:"2px 8px",color:"#2a7fc1",borderColor:"rgba(42,127,193,0.3)"}}>Explore</button>
+                  <span style={{display:"flex",alignItems:"center",gap:5}}><span style={{width:3,height:10,background:"#c0192c",borderRadius:1,display:"inline-block"}}/>THREAT TIMELINE</span>
                 </div>
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
-                  <div style={{fontSize:11,fontWeight:600,color:"#1e2830"}}>{sit.pattern.name}</div>
-                </div>
-                <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:10}}>
-                  <span style={{fontSize:9,color:"#6a7a88"}}>Status:</span>
-                  <span style={{fontSize:8.5,fontWeight:700,letterSpacing:1,padding:"1px 7px",borderRadius:2,background:sit.pattern.status==="ACTIVE"?"#fde8ea":sit.pattern.status==="PERSISTENT"?"#fdf0e8":"#e8f5ee",border:`1px solid ${sit.pattern.status==="ACTIVE"?"#d46070":sit.pattern.status==="PERSISTENT"?"#d4906a":"#a8d8bc"}`,color:sit.pattern.status==="ACTIVE"?"#8a0015":sit.pattern.status==="PERSISTENT"?"#8a3800":"#1a7a4a"}}>{sit.pattern.status}</span>
-                </div>
-                <div style={{background:"#f8fafc",border:"1px solid #e8ecf0",borderRadius:3,padding:"14px 10px",display:"flex",gap:14,flexWrap:"wrap",justifyContent:"center"}}>
-                  {sit.pattern.units.map((u,i)=><MilUnit key={i} {...u}/>)}
+                <div style={{display:"flex",flexDirection:"column",gap:6}}>
+                  {[
+                    {time:"15 Mar 12:41Z",threat:"HIGH",event:"Orbital maneuver detected at perigee",color:"#c0192c"},
+                    {time:"14 Mar 09:18Z",threat:"ELEVATED",event:"Sub-satellite separation confirmed",color:"#ff8800"},
+                    {time:"13 Mar 06:00Z",threat:"MONITOR",event:"Pattern analysis initiated",color:"#f0c040"},
+                  ].map((ev,i)=>(
+                    <div key={i} style={{display:"flex",gap:8,paddingLeft:8,borderLeft:`2px solid ${ev.color}`}}>
+                      <div style={{fontSize:8,color:"#8a9aaa",fontFamily:"monospace",flexShrink:0,whiteSpace:"nowrap"}}>{ev.time}</div>
+                      <div style={{flex:1}}>
+                        <div style={{fontSize:8.5,fontWeight:600,color:ev.color}}>{ev.threat}</div>
+                        <div style={{fontSize:9,color:"#2a3a48",lineHeight:1.4}}>{ev.event}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 

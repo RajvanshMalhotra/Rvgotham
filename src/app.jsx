@@ -266,7 +266,7 @@ export default function GothamOrbital(){
 
   const [ready,     setReady]     = useState(false);
   const [tleStatus, setTleStatus] = useState("loading");
-  const [bUrl, setBUrl] = useState(import.meta.env.VITE_BACKEND_URL || "/api");
+  const [bUrl,      setBUrl]      = useState("http://16.16.251.215:8000");
   const [bSec,      setBSec]      = useState("");
   const [groq,      setGroq]      = useState("");
   const [tavily,    setTavily]    = useState("");
@@ -369,61 +369,40 @@ export default function GothamOrbital(){
     const Cesium = window.Cesium;
     if(!Cesium||!cesiumContainerRef.current)return;
 
-    // Suppress Ion token warning with a placeholder (not used — offline imagery only)
-    Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_TOKEN || "";
+    // Use anonymous token (no Bing imagery needed - we'll use natural earth)
+    Cesium.Ion.defaultAccessToken = "";
 
     const viewer = new Cesium.Viewer(cesiumContainerRef.current,{
-      baseLayerPicker:      false,
-      geocoder:             false,
-      homeButton:           false,
-      sceneModePicker:      false,
+      imageryProvider: new Cesium.TileMapServiceImageryProvider({
+        url: Cesium.buildModuleUrl("Assets/Textures/NaturalEarthII"),
+      }),
+      baseLayerPicker:  false,
+      geocoder:         false,
+      homeButton:       false,
+      sceneModePicker:  false,
       navigationHelpButton: false,
-      animation:            false,
-      timeline:             false,
-      fullscreenButton:     false,
-      infoBox:              false,
-      selectionIndicator:   false,
-      creditContainer:      document.createElement("div"),
+      animation:        false,
+      timeline:         false,
+      fullscreenButton: false,
+      infoBox:          false,
+      selectionIndicator: false,
+      creditContainer:  document.createElement("div"), // hide credits
     });
     viewerRef.current = viewer;
-
-    // ── Fix sharpness for high-DPI screens ──
-    viewer.resolutionScale = window.devicePixelRatio || 1;
-
-    // ── Replace default imagery with blue marble from Ion, fallback to OSM ──
-    viewer.imageryLayers.removeAll();
-    try {
-      viewer.imageryLayers.addImageryProvider(
-        new Cesium.IonImageryProvider({ assetId: 3845 }) // Blue Marble
-      );
-    } catch(e) {
-      viewer.imageryLayers.addImageryProvider(
-        new Cesium.OpenStreetMapImageryProvider({ url: "https://tile.openstreetmap.org/" })
-      );
-    }
 
     // ── Scene settings ──
     viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#000810");
     viewer.scene.globe.enableLighting = true;
     viewer.scene.skyAtmosphere.show = true;
     viewer.scene.fog.enabled = false;
+
+    // Dark atmosphere
     viewer.scene.skyAtmosphere.atmosphereLightIntensity = 10.0;
 
     // Camera initial position
     viewer.camera.setView({
       destination: Cesium.Cartesian3.fromDegrees(15, 20, 22000000),
       orientation:{ heading:0, pitch:-Math.PI/2, roll:0 },
-    });
-
-    // ── Auto-rotation: slowly spin the globe when user isn't interacting ──
-    let isUserInteracting = false;
-    viewer.scene.canvas.addEventListener("mousedown", ()=>{ isUserInteracting = true; });
-    viewer.scene.canvas.addEventListener("mouseup",   ()=>{ setTimeout(()=>{ isUserInteracting = false; }, 2000); });
-    viewer.scene.canvas.addEventListener("wheel",     ()=>{ isUserInteracting = true; setTimeout(()=>{ isUserInteracting = false; }, 3000); });
-    viewer.clock.onTick.addEventListener(()=>{
-      if(!isUserInteracting && !viewerRef.current?.isDestroyed()){
-        viewer.scene.camera.rotate(Cesium.Cartesian3.UNIT_Z, -0.00008);
-      }
     });
 
     // ── Add satellite entities ──
